@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home</title>
+    <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
+    <link rel="stylesheet" href="../static/assets2/css/app.css">
+    <link rel="stylesheet" href="../static/assets2/css/theme.css">
+     <link rel="icon" href="../static/assets/img/brand/favicon.png" type="image/png">
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <a class="navbar-brand font-weight-bolder mr-3" href="/index/"><img src="../static/assets/img/brand/dark.svg"></a>
+    <button class="navbar-light navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+    	<ul class="navbar-nav mr-auto align-items-center">
+    		<form class="bd-search hidden-sm-down">
+    			<input type="text" class="form-control bg-graylight border-0 font-weight-bold" id="search-input" placeholder="Search..." autocomplete="off">
+    			<div class="dropdown-menu bd-search-results" id="search-results">
+    			</div>
+    		</form>
+    	</ul>
+    	<ul class="navbar-nav ml-auto align-items-center">
+    		<li class="nav-item">
+    		<a class="nav-link active" href="/index/">Home</a>
+    		</li>
+    		<li class="nav-item dropdown dropdown-animate" data-toggle="hover">
+    		<a class="nav-link" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><img class="rounded-circle mr-2" src="../static/assets2/img/av.png" width="30"><span class="align-middle">{{request.session.info.name}}</span></a>
+    		 <div class="dropdown-menu dropdown-menu-single">
+                    <a href="/logout/" class="dropdown-item">Logout</a>
+                </div>
+            </li>
+{#            <li class="nav-item dropdown dropdown-animate" data-toggle="hover">#}
+{#                <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><strong class="text-primary">{{request.session.info.name}}</strong></a>#}
+{#                <div class="dropdown-menu dropdown-menu-single">#}
+{#                    <a href="/userPage/" class="dropdown-item">See all picture</a>#}
+{#                    <div class="dropdown-divider"></div>#}
+{#                    <a href="/logout/" class="dropdown-item">Logout</a>#}
+{#                </div>#}
+{#            </li>#}
+    	</ul>
+    </div>
+    </nav>    
+    <main role="main">
+        
+    
+    <section class="mt-4 mb-5">
+
+    <div class="container-fluid">
+    	<div class="row">
+    		<div class="card-columns">
+                
+                {% for photo in photo_object %}
+                    <div class="card card-pin">
+                        <img class="card-img" src="{{ photo.photoDate }}" alt="Card image">
+                        <div class="overlay">
+                            <div class="more">
+                                <a href="/picDelete/?pid={{ photo.id }}">
+                                <i class="fa fa-arrow-circle-o-right" aria-hidden="true"></i> Delete </a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+
+    		</div>
+    	</div>
+    </div>
+    </section>
+        
+    </main>
+
+    <script src="../static/assets2/js/app.js"></script>
+    <script src="../static/assets2/js/theme.js"></script>
+    
+    <footer class="footer pt-5 pb-5 text-center">
+        
+    <div class="container">
+        
+          <div class="socials-media">
+    
+            <ul class="list-unstyled">
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-facebook"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-twitter"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-instagram"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-google-plus"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-behance"></i></a></li>
+              <li class="d-inline-block ml-1 mr-1"><a href="#" class="text-dark"><i class="fa fa-dribbble"></i></a></li>
+            </ul>
+    
+          </div>
+        
+            <!--
+              All the links in the footer should remain intact.
+              You may remove the links only if you donate:
+              https://www.wowthemes.net/freebies-license/
+            -->
+          <p>©  <span class="credits font-weight-bold">        
+            <a target="_blank" class="text-dark" href="https://www.wowthemes.net/pintereso-free-html-bootstrap-template/"><u>Pintereso Bootstrap HTML Template</u> by WowThemes.net.</a>
+          </span>
+          </p>
+    
+    
+        </div>
+        
+    </footer>    
+</body>
+    
+</html>

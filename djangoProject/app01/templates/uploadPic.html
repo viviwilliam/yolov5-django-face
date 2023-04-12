@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Webpixels">
+    <title>Quick</title>
+    <!-- Preloader -->
+    <style>
+        .img{
+            max-width: 700px;
+            max-height: 690px;
+	        object-fit: cover;
+        }
+        @keyframes hidePreloader {
+            0% {
+                width: 100%;
+                height: 100%;
+            }
+
+            100% {
+                width: 0;
+                height: 0;
+            }
+        }
+
+        body>div.preloader {
+            position: fixed;
+            background: white;
+            width: 100%;
+            height: 100%;
+            z-index: 1071;
+            opacity: 0;
+            transition: opacity .5s ease;
+            overflow: hidden;
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        body:not(.loaded)>div.preloader {
+            opacity: 1;
+        }
+
+        body:not(.loaded) {
+            overflow: hidden;
+        }
+        #border{
+                    position:absolute;
+                    border-style:solid;
+                    border-width:5px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 1500px;
+                    height: 700px;
+                }
+        .class1{
+            display:inline-block;
+        }
+
+        body.loaded>div.preloader {
+            animation: hidePreloader .5s linear .5s forwards;
+        }
+        lef
+
+
+    </style>
+    <script>
+        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.querySelector('body').classList.add('loaded');
+            }, 300);
+        });
+    </script>
+    <!-- Favicon -->
+    <link rel="icon" href="../static/assets/img/brand/favicon.png" type="image/png"><!-- Font Awesome -->
+    <link rel="stylesheet" href="../static/assets/libs/@fortawesome/fontawesome-free/css/all.min.css">
+    <!-- Quick CSS -->
+    <link rel="stylesheet" href="../static/assets/css/quick-website.css">
+    <!-- Docs CSS - used only for demo -->
+    <link rel="stylesheet" href="../static/docs/assets/css/docs.css">
+</head>
+
+<body class="docs">
+<form method="post" action="/uploadPic/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Nav -->
+    <header class="header" id="header-main">
+        <!-- Main navbar -->
+        <nav class="navbar navbar-main navbar-expand-lg fixed-top navbar-shadow navbar-light bg-white border-bottom" id="navbar-main">
+            <div class="container-fluid justify-content-between">
+                <!-- User's navbar -->
+                <div class="navbar-user d-lg-none">
+                    <ul class="navbar-nav flex-row align-items-center">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link nav-link-icon sidenav-toggler" data-action="sidenav-pin" data-target="#sidenav-main"><i data-feather="menu"></i></a>
+                        </li>
+                    </ul>
+                </div>
+                <!-- Navbar brand -->
+                <a class="navbar-brand" href="/index/">
+                    <img alt="Image placeholder" src="../static/assets/img/brand/dark.svg" id="navbar-logo">
+                    <sup class="text-muted text-xs text-uppercase">Docs</sup>
+                </a>
+                <!-- Live preview -->
+                <ul class="navbar-nav flex-row align-items-center d-lg-none">
+                    <li class="nav-item">
+                        <a href="/index/" class="nav-link nav-link-icon"><i data-feather="eye"></i></a>
+                    </li>
+                </ul>
+                <!-- Navbar nav -->
+                <div class="collapse navbar-collapse" id="navbar-main-collapse">
+                    <!-- Right menu -->
+                    <ul class="navbar-nav align-items-center mx-auto">
+                        <li class="nav-item">
+                                <input  type="file" name="img" id="file"  accept="image/*"  onchange="changepic(this)" placeholder="上传图片">
+
+                        </li>
+                        <li >
+                            <input class="btn btn-sm btn-primary ml-4 btn-icon d-none d-lg-inline-flex" type="submit" value="打码">
+                        </li>
+
+                        <a href="/uploadPic/" class="btn btn-sm btn-primary ml-4 btn-icon d-none d-lg-inline-flex">
+                            <span class="btn-inner--text">清空</span>
+                        </a>
+
+                    </ul>
+                </div>
+                <a href="/index/" class="btn btn-sm btn-primary ml-4 btn-icon d-none d-lg-inline-flex">
+                    <span class="btn-inner--icon"><i data-feather="chevron-left"></i></span>
+                    <span class="btn-inner--text">Back to Quick</span>
+                </a>
+            </div>
+        </nav>
+    </header>
+ <div id="border">
+
+            <div   style="float:left;width: 50%;float: left;">
+
+                <div class="class1">
+{#                <div style="width: 50%;height: 50%">#}
+                        <img class="img" src="" id="show">
+                        <img class="img" src="{{ str2 }}" alt=""/>
+                        <img class="img" src="{{ account.photo.url }}" alt=""/>
+{#                  <img src="../static/img/zidae.jpg" style="width: auto;  height: auto;  max-width: 100%;  max-height: 100%;  ">#}
+{#                </div>#}
+                </div>
+            </div>
+            <div   style="float:right;width: 50%;float: right;">
+
+                <div class="class1">
+{#                <div style="width: 50%;height: 50%">#}
+                  <img class="img" src="{{str}}">
+{#                </div>#}
+                </div>
+            </div>
+{#        </div>#}
+    </div>
+    </form>
+    <!-- Footer -->
+    <!-- Scripts -->
+    <!-- Core JS  -->
+    <script src="../static/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="../static/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/assets/libs/svg-injector/dist/svg-injector.min.js"></script>
+    <script src="../static/assets/libs/feather-icons/dist/feather.min.js"></script>
+    <!-- Docs JS -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.2.0/highlight.min.js"></script>
+    <script src="../static/assets/libs/clipboard/dist/clipboard.min.js"></script>
+    <!-- Quick JS -->
+    <script src="../static/assets/js/quick-website.js"></script>
+    <!-- Feather Icons -->
+    <script>
+
+        function changepic() {
+            var reads= new FileReader();
+            f=document.getElementById('file').files[0];
+            reads.readAsDataURL(f);
+            reads.onload=function (e) {
+                document.getElementById('show').src=this.result;
+            };
+        }
+        feather.replace({
+            'width': '1em',
+            'height': '1em'
+        })
+    </script>
+</body>
